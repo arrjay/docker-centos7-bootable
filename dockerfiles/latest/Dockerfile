@@ -57,6 +57,9 @@ ADD platform-info/platform-info.service /etc/systemd/system/platform-info.servic
 ADD platform-info/platform-info.sh      /usr/local/sbin/platform-info.sh
 RUN ln -sf /etc/systemd/system/platform-info.service "/etc/systemd/system/multi-user.target.wants/platform-info.service"
 
+# disable smartd on virtual hosts
+ADD smartd.service.d /etc/systemd/system/smartd.service.d
+
 # service to start console if we find a hvc0 console *shrug*
 ADD hvc0-console.service /etc/systemd/system/hvc0-console.service
 
