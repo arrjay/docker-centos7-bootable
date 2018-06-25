@@ -10,6 +10,7 @@ RUN yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
                    selinux-policy-targeted \
                    NetworkManager openssh-server openssh-clients cloud-init \
                    sudo extendroot passwd authconfig epel-release chrony \
+                   systemd-networkd \
                    smartmontools ethtool lm-sensors \
                    vim-minimal \
                    tboot \
