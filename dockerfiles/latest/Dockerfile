@@ -5,6 +5,7 @@ MAINTAINER RJ Bergeron <rbergero@gmail.com>
 # install packages
 RUN yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
                    grub grub2-tools grub2 grub2-efi grub2-efi-modules \
+                   grub2-efi-ia32 grub2-efi-ia32-modules \
                    shim efibootmgr \
                    augeas \
                    selinux-policy-targeted \
