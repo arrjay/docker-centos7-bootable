@@ -35,6 +35,9 @@ RUN bash -c 'autosudo=$(mktemp) && \
     env EDITOR="${autosudo}" visudo && \
     rm "${autosudo}"'
 
+# when/if we run grub-install
+ADD grub.d/* /etc/grub.d/
+
 # reconfigure cloud-init
 RUN sed -i -e '/ - locale/d' /etc/cloud/cloud.cfg
 ADD /cloud.cfg.d /etc/cloud/cloud.cfg.d
