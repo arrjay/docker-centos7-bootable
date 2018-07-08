@@ -17,6 +17,7 @@ RUN yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
                    tboot \
                    kernel \
                    terminus-fonts-console fbset \
+                   tmux \
                    && \
     yum clean all && rm -rf /var/cache/yum &&\
     find / -type d \( -name proc -o -name sys \) -prune -o -iname \*.rpmnew -exec rm {} \;
