@@ -12,11 +12,11 @@ RUN yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
                    NetworkManager openssh-server openssh-clients cloud-init \
                    sudo extendroot passwd authconfig epel-release chrony \
                    systemd-networkd \
-                   smartmontools ethtool lm-sensors \
+                   smartmontools ethtool lm_sensors usbutils \
                    vim-minimal \
                    tboot \
                    kernel \
-                   terminus-fonts-console \
+                   terminus-fonts-console fbset \
                    && \
     yum clean all && rm -rf /var/cache/yum &&\
     find / -type d \( -name proc -o -name sys \) -prune -o -iname \*.rpmnew -exec rm {} \;
