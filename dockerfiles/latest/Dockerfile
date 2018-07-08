@@ -16,12 +16,16 @@ RUN yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
                    vim-minimal \
                    tboot \
                    kernel \
+                   terminus-fonts-console \
                    && \
     yum clean all && rm -rf /var/cache/yum &&\
     find / -type d \( -name proc -o -name sys \) -prune -o -iname \*.rpmnew -exec rm {} \;
 
 # add grub bits
 ADD default-grub /etc/default/grub
+
+# add vconsole config
+ADD vconsole.conf /etc/vconsole.conf
 
 # add user
 RUN groupadd -g 1024 ejusdem && \
@@ -37,6 +41,9 @@ RUN bash -c 'autosudo=$(mktemp) && \
 
 # when/if we run grub-install
 ADD grub.d/* /etc/grub.d/
+
+# add drivers to initramfs
+RUN echo 'add_drivers+=" nouveau vfio-pci "' >> /etc/dracut.conf
 
 # reconfigure cloud-init
 RUN sed -i -e '/ - locale/d' /etc/cloud/cloud.cfg

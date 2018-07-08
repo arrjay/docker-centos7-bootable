@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -x
+
+# if we have a 1152x864 mode, prefer that to our 720x400 default.
+grep -q 1152x864 /sys/class/drm/*/modes && {
+  sed -i -e 's/720x400/1152x864/' /etc/default/grub
+}
