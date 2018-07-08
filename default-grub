@@ -4,4 +4,4 @@ GRUB_DEFAULT=saved
 GRUB_DISABLE_SUBMENU=true
 GRUB_TERMINAL_OUTPUT="console"
 GRUB_DISABLE_RECOVERY="true"
-GRUB_CMDLINE_LINUX="quiet video=640x480 vt.console=0x30 consoleblank=0"
+GRUB_CMDLINE_LINUX="quiet video=640x480 vt.color=0x30 consoleblank=0"
