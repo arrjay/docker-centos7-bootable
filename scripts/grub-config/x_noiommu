@@ -3,9 +3,9 @@
 iommu=(/sys/class/iommu/*)
 
 if [ ! -e "${iommu[0]}" ] ; then
-  rm -rf /etc/grub.d/*tboot*
+  chmod -x /etc/grub.d/*tboot*
 fi
 
 if [ -f "/run/platform-info/chassis_vendor_words/giada" ] ; then
-  rm -rf /etc/grub.d/*tboot*
+  chmod -x /etc/grub.d/*tboot*
 fi
