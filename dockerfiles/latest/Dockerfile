@@ -17,7 +17,7 @@ RUN yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
                    tboot \
                    kernel \
                    terminus-fonts-console fbset \
-                   tmux \
+                   tmux vim-enhanced mc w3m ncftp s3cmd \
                    && \
     yum clean all && rm -rf /var/cache/yum &&\
     find / -type d \( -name proc -o -name sys \) -prune -o -iname \*.rpmnew -exec rm {} \;
@@ -27,6 +27,14 @@ ADD default-grub /etc/default/grub
 
 # add vconsole config
 ADD vconsole.conf /etc/vconsole.conf
+
+# additional color elements
+ADD mc-skins /usr/share/mc/skins
+RUN ln -sf /etc/DIR_COLORS.lightbgcolor /etc/skel/.dir_colors && \
+    ln -sf /etc/DIR_COLORS.lightbgcolor /root/.dir_colors
+
+# *any* profile.d stuff
+ADD profile.d /etc/profile.d
 
 # add user
 RUN groupadd -g 1024 ejusdem && \
