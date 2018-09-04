@@ -11,3 +11,11 @@ done
 if [ -f /run/platform-info/bios_version_words/mrchromebox ] ; then
   cp /boot/efi/EFI/centos/grubx64.efi /boot/efi/EFI/BOOT/grubx64.efi
 fi
+
+# large BIOS lunacy
+if [ -f '/run/platform-info/product_name_words/macmini2,1' ] ; then
+  cp /boot/efi/EFI/centos/grubia32.efi /boot/efi/EFI/BOOT/BOOTIA32.EFI
+  hfs-bless /boot/efi/EFI/BOOT/BOOTIA32.EFI
+  mv /boot/grub2/grub.cfg /boot/efi/EFI/BOOT/grub.cfg
+  ln -sf ../boot/efi/EFI/BOOT/grub.cfg /etc/grub2-efi.cfg
+fi
