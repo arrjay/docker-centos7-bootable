@@ -2,8 +2,13 @@ FROM centos:7
 
 MAINTAINER RJ Bergeron <rbergero@gmail.com>
 
+ADD yum.repos.d /etc/yum.repos.d
+
+ADD rpm-gpg /etc/pki/rpm-gpg
+
 # install packages
-RUN yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
+RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org && \
+    yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
                    grub grub2-tools grub2 grub2-efi grub2-efi-modules \
                    grub2-efi-ia32 grub2-efi-ia32-modules \
                    shim efibootmgr \
@@ -18,6 +23,8 @@ RUN yum -y install hostname parted lvm2 cryptsetup mdadm xfsprogs \
                    kernel \
                    terminus-fonts-console fbset \
                    tmux vim-enhanced mc w3m ncftp s3cmd \
+                   bsdtar \
+                   kmod-hfsplus \
                    && \
     yum clean all && rm -rf /var/cache/yum &&\
     find / -type d \( -name proc -o -name sys \) -prune -o -iname \*.rpmnew -exec rm {} \;
