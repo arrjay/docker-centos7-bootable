@@ -1,0 +1,10 @@
+[redjay-centos7-mactel]
+name=Copr repo for centos7-mactel owned by redjay
+baseurl=https://copr-be.cloud.fedoraproject.org/results/redjay/centos7-mactel/epel-7-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centos7-mactel
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
