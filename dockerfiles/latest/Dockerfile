@@ -15,9 +15,10 @@ RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org && \
                    shim efibootmgr \
                    augeas \
                    selinux-policy-targeted \
-                   NetworkManager openssh-server openssh-clients cloud-init \
+                   openssh-server openssh-clients cloud-init \
                    sudo extendroot passwd authconfig epel-release chrony \
-                   systemd-networkd \
+                   audit \
+                   systemd-networkd systemd-resolved \
                    smartmontools ethtool lm_sensors usbutils \
                    vim-minimal \
                    tboot \
