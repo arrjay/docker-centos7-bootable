@@ -31,6 +31,14 @@ RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org && \
     yum clean all && rm -rf /var/cache/yum &&\
     find / -type d \( -name proc -o -name sys \) -prune -o -iname \*.rpmnew -exec rm {} \;
 
+# install intel microcode
+ADD sha512sums /tmp/sha512sums
+RUN curl -L -o /tmp/microcode.tgz https://downloadmirror.intel.com/28087/eng/microcode-20180807a.tgz && \
+    sha512sum -c /tmp/sha512sums/microcode && \
+    tar xf /tmp/microcode.tgz -C /lib/firmware && \
+    rm /tmp/microcode.tgz && \
+    rm -rf /tmp/sha512sums
+
 # add grub bits
 ADD default-grub /etc/default/grub
 
