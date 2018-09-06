@@ -13,6 +13,7 @@ enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org
 protect=0
+includepkgs=kmod-hfsplus
 
 [elrepo-testing]
 name=ELRepo.org Community Enterprise Linux Testing Repository - el7
